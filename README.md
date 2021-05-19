@@ -1,2 +1,3 @@
-# React-Ninja-Tutorial
-A small little tutorial following youtuber The Net Ninja in his React course.
+# React-DBikes
+Same Application as the one done in the group project but this time written in React.
+
