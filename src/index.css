@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+/* base styles */
+* {
+  margin: 0;
+  font-family: "Quicksand";
+  color: #333;
+  box-sizing: border-box;
+}
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 12vh;
+  margin: 0 auto;
+  border-bottom: 2px solid rgba(0, 115, 152, 1);
+}
+.navbar-logo img {
+  width: 105px;
+  height: 70px;
+}
+.navbar-links {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+}
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+}
+.navbar a:hover {
+  color: rgba(0, 115, 152, 1);
+}
+.navbar-logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar-logo img {
+  margin: 5px;
+}
+.navbar-logo {
+  text-decoration: none;
+  color: black;
+}
+
+/* Styles that will be used in a lot of elements */
+.rounded {
+  border-radius: 25px;
+  height: 54px;
+  text-overflow: ellipsis;
+  border: 0;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* disabled the cross in the infowindows */
+.gm-style-iw > button {display: none!important;}
+
+/* Styles for the info windows */
+.contentStr {
+  font-family: Roboto, sans-serif;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.contentStr b {
+  font-weight: bold;
+}
+
+.station-infowindow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0px 20px;
+}
+
+.infowindow-subelements {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  padding-top: 10px;
+}
+
+.infowindow-subelements p {
+  padding: 0px 5px;
+}
+
+/* Styles for the top-center buttons */
+.control-buttons-wrapper {
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  margin-top: 35px;
+}
+
+.control-button {
+  border-radius: 25px;
+  padding: 17px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  cursor: pointer;
+}
+
+.control-button p {
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0px 10px;
+}
+
+.active-button {
+  background-color: lightblue;
+  color: black;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+/* blog previews / list */
+.blog-preview {
+  padding: 10px 16px;
+  margin: 20px 0;
+  border-bottom: 1px solid #fafafa;
+}
+.blog-preview:hover {
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.blog-preview h2 {
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 8px;
+}
+.blog-preview a {
+  text-decoration: none;
+}
+
+/* blog details page */
+.blog-details h2 {
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 10px;
+}
+.blog-details div {
+  margin: 20px 0;
+}
+.blog-details button {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* create new blog form */
+.create {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+.create label {
+  text-align: left;
+  display: block;
+}
+.create h2 {
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 30px;
+}
+.create input,
+.create textarea,
+.create select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+.create button {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
