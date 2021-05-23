@@ -10,6 +10,7 @@ import iconParking from '../fixtures/icon-parking.png';
 import iconBankingTrue from '../fixtures/icon-banking-true.png';
 import iconBankingFalse from '../fixtures/icon-banking-false.png';
 import ControlButtons from './ControlButtons';
+import SideBar from './SideBar';
 
 const libraries = ["places"];
 const containerStyle = {
@@ -31,7 +32,7 @@ const center = {
 export default function MapContainer() {
    // Loads the map
    const { isLoaded, loadError } = useLoadScript({
-      googleMapsApiKey: "AIzaSyD80-o7Dp_KBO_yhAL9QuUtF7BQL-c5v54",
+      googleMapsApiKey: "AIzaSyCLGkrQoHNmMyhdvwl0wmron1ndtREM0zM",
       libraries,
       version: "3.42"
    });
@@ -42,8 +43,15 @@ export default function MapContainer() {
    // Fetch the availability
    const { data: availability, isPending: isPendingAvailability, errorAvailability } = useFetch('http://localhost:9000/availability');
 
-   // Selected marker when the user mouseover a marker
+   // Selected marker when the user mouseover a marker (stores a station object)
    const [markerSelected, setMarkerSelected] = useState(null);
+
+   // Selected station when the user clicks on a marker or performs a destination search
+   // (stores a station object)
+   const [stationSelected, setStationSelected] = useState(null);
+
+   // marker to define the user position
+   const [userLocation, setUserLocation] = useState(null);
 
    // Selected control button to manage what info is displayed on the markers label
    // Default value is available_bikes
@@ -87,6 +95,7 @@ export default function MapContainer() {
 
    return (
       <div>
+         {/* Top center buttons */}
          <ControlButtons buttonSelected={buttonSelected} setButtonSelected={setButtonSelected}></ControlButtons>
          <GoogleMap
             mapContainerStyle={containerStyle}
@@ -129,6 +138,7 @@ export default function MapContainer() {
                      fontSize: "12px",
                      fontFamily: "Roboto, sans-serif",
                   }}
+                  onClick={() => setStationSelected(station)}
                   onMouseOver={() => {
                      setMarkerSelected(station);
                   }}
@@ -137,11 +147,28 @@ export default function MapContainer() {
                   }} />)
             }))}
 
+            {/* Display an infowindow if a marker is selected */}
             {markerSelected ? handleInfoWindow(markerSelected) : null}
+
+            {/* In case the user clicks in the geolocation button */}
+            {userLocation && (<Marker
+               key={'user location'}
+               position={{
+                  lat: userLocation.lat,
+                  lng: userLocation.lng
+               }} />)
+            }
 
             {/* In case the user has clicked on the bike paths button */}
             {buttonSelected === "bike_paths" && <BicyclingLayer />}
 
+            {/* Side bar and search system */}
+            {stations && <SideBar
+               stations={stations}
+               map={mapRef}
+               setUserLocation={setUserLocation}
+               stationSelected={stationSelected}
+               setStationSelected={setStationSelected} />}
 
          </GoogleMap>
 
@@ -149,7 +176,7 @@ export default function MapContainer() {
    );
 }
 
-
+// Function that displays an infowindow 
 function handleInfoWindow(marker) {
    var iconBanking = iconBankingFalse;
    var iconOpacity = 0.2;
