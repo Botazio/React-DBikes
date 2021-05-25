@@ -9,9 +9,10 @@ import OriginSearchBar from './OriginSearchBar';
 import iconPosition from '../fixtures/icon-position.png';
 import iconRefresh from '../fixtures/icon-refresh.png';
 import iconClose from '../fixtures/icon-close.png';
+import iconDirection from '../fixtures/icon-direction.png';
 
 
-function DirectionsContainer({ active, setActive, stations, map, setUserLocation }) {
+function DirectionsContainer({ active, setActive, stationSelected, setStationSelected, stations, map, setUserLocation }) {
    const [response, setResponse] = React.useState(null);
    const [travelMode, setTravelMode] = React.useState('DRIVING');
    const [origin, setOrigin] = React.useState(null);
@@ -53,7 +54,7 @@ function DirectionsContainer({ active, setActive, stations, map, setUserLocation
             strokeColor: "#1A73E8",
             zIndex: 10000,
             strokeWeight: "5",
-         }
+         },
       }
    }, [response])
 
@@ -66,44 +67,65 @@ function DirectionsContainer({ active, setActive, stations, map, setUserLocation
 
    return (
       <div>
-         <div className={handleClassTag()}>
+         {/*The components are displayed depending if the side bar is active or not*/}
+         {!active && (<div>
+            <div
+               className="directions-button rounded"
+               onClick={() => { setActive(true) }}>
+               <img
+                  src={iconDirection}
+                  style={{ "width": "20px", "height": "20px" }}
+                  alt={'directions icon'} />
+            </div>
+         </div>)}
+
+         {active && (<div>
             <div
                className="close-search-button"
                onClick={() => { cleanSearch(); setActive(false) }}>
                <img
                   src={iconClose}
-                  style={{ cursor: "pointer", "width": "15px", "height": "15px" }}
+                  style={{ "width": "15px", "height": "15px" }}
                   alt={'close icon'} />
             </div>
-         </div>
+         </div>)}
+
+         {/* A tag is used in this case because the side bar styles are different depending 
+         if it is active or not */}
          <div className={"directions-container-" + handleClassTag()}>
-            <div className={handleClassTag()}>
+            {active && (<div>
                <TransportTypeButtons setTravelMode={setTravelMode} />
-            </div>
-            <div className={"search-bar-container " + handleClassTag()}>
+            </div>)}
+
+            {active && (<div className={"search-bar-container"}>
                <img
-                  className={handleClassTag()}
                   src={iconPosition}
                   style={{ cursor: "pointer", "width": "20px", "height": "20px" }}
                   alt={'position icon'}
                   onClick={() => getUserPosition()} />
                <OriginSearchBar setOrigin={setOrigin} cleanInput={cleanInput} />
-            </div>
+            </div>)}
+
+
             <div className="search-bar-container">
-               <img
-                  className={handleClassTag()}
+               {active && (<img
                   src={iconRefresh}
                   style={{ cursor: "pointer", "width": "20px", "height": "20px" }}
                   alt={'refresh icon'}
-                  onClick={() => cleanSearch()} />
+                  onClick={() => cleanSearch()} />)}
+
                <DestinationSearchBar
                   active={active}
                   setActive={setActive}
                   stations={stations}
+                  stationSelected={stationSelected}
+                  setStationSelected={setStationSelected}
                   cleanInput={cleanInput}
                   setDestination={setDestination} />
             </div>
          </div>
+
+         {/* Render the directions on the map if the user introduces origin and destination */}
          {origin && destination && (
             <DirectionsService
                options={directionsServiceOptions}
@@ -122,6 +144,7 @@ function DirectionsContainer({ active, setActive, stations, map, setUserLocation
       setOrigin(null);
       setDestination(null);
       setUserLocation(null);
+      setStationSelected(null);
 
       if (cleanInput) setCleanInput(false);
       if (!cleanInput) setCleanInput(true);
@@ -129,6 +152,10 @@ function DirectionsContainer({ active, setActive, stations, map, setUserLocation
 
    function getUserPosition() {
       navigator.geolocation.getCurrentPosition((position) => {
+         setOrigin({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+         });
          setUserLocation({
             lat: position.coords.latitude,
             lng: position.coords.longitude

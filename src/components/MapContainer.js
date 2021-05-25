@@ -5,10 +5,12 @@ import mapStyles from '../fixtures/mapStyles';
 import iconGreen from '../fixtures/icon-location-green.png';
 import iconRed from '../fixtures/icon-location-red.png';
 import iconYellow from '../fixtures/icon-location-yellow.png';
+import markerBlue from '../fixtures/marker-user-position.png';
 import iconBlueBike from '../fixtures/icon-bike-blue.png';
 import iconParking from '../fixtures/icon-parking.png';
 import iconBankingTrue from '../fixtures/icon-banking-true.png';
 import iconBankingFalse from '../fixtures/icon-banking-false.png';
+import iconCenter from '../fixtures/icon-center-focus.png';
 import ControlButtons from './ControlButtons';
 import SideBar from './SideBar';
 
@@ -156,6 +158,12 @@ export default function MapContainer() {
                position={{
                   lat: userLocation.lat,
                   lng: userLocation.lng
+               }}
+               icon={{
+                  url: markerBlue,
+                  size: new window.google.maps.Size(34, 34),
+                  scaledSize: new window.google.maps.Size(34, 34),
+                  labelOrigin: new window.google.maps.Point(17, 13),
                }} />)
             }
 
@@ -170,10 +178,25 @@ export default function MapContainer() {
                stationSelected={stationSelected}
                setStationSelected={setStationSelected} />}
 
+            {/* Buttons to center the view in Dublin and set the view in the user position */}
+            <div
+               className="center-view-button"
+               onClick={() => centerView(mapRef)}>
+               <img
+                  src={iconCenter}
+                  style={{ "width": "20px", "height": "20px" }}
+                  alt={'icon position'} />
+            </div>
          </GoogleMap>
 
       </div>
    );
+}
+
+// Function to center the view again in Dublin 
+function centerView(mapRef) {
+   mapRef.current.panTo(center);
+   mapRef.current.setZoom(13);
 }
 
 // Function that displays an infowindow 

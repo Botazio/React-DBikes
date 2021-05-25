@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import redBike from '../fixtures/icon-bike-red.png';
 import yellowBike from '../fixtures/icon-bike-yellow.png';
 import greenBike from '../fixtures/icon-bike-green.png';
@@ -15,9 +15,9 @@ const Navbar = () => {
             </div>
          </div>
          <div className="navbar-links">
-            <Link to="/">MAP</Link>
-            <Link to="/how_it_works">HOW IT WORKS</Link>
-            <Link to="/about">ABOUT</Link>
+            <NavLink exact activeClassName="active-link" to="/">MAP</NavLink>
+            <NavLink exact activeClassName="active-link" to="/how_it_works">HOW IT WORKS</NavLink>
+            <NavLink exact activeClassName="active-link" to="/about">ABOUT</NavLink>
          </div>
       </nav>
    );

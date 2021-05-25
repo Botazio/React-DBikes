@@ -2,8 +2,10 @@ import React from 'react';
 import DirectionsContainer from './DirectionsContainer';
 import InfoContainer from './InfoContainer';
 
-export default function SideBar({ stations, map, setUserLocation, stationSelected, setStationSelected }) {
+function SideBar({ stations, map, setUserLocation, stationSelected, setStationSelected }) {
    const [active, setActive] = React.useState(false);
+
+   if (stationSelected && !active) setActive(true);
 
    function handleClassTag() {
       if (active) {
@@ -18,6 +20,8 @@ export default function SideBar({ stations, map, setUserLocation, stationSelecte
          <DirectionsContainer
             active={active}
             setActive={setActive}
+            stationSelected={stationSelected}
+            setStationSelected={setStationSelected}
             stations={stations}
             map={map}
             setUserLocation={setUserLocation} />
@@ -29,3 +33,5 @@ export default function SideBar({ stations, map, setUserLocation, stationSelecte
 
    )
 }
+
+export default React.memo(SideBar);

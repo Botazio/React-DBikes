@@ -1,4 +1,4 @@
-import Navbar from './components/Navbar'; 
+import Navbar from './components/Navbar';
 import MapContainer from './components/MapContainer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotFound from './components/NotFound';
@@ -7,10 +7,16 @@ function App() {
   return (
     <Router>
       <div className="App">
-      <Navbar />
+        <Navbar />
         <div className="content">
           <Switch>
-            <Route exact path="/"> 
+            <Route exact path="/">
+              <MapContainer />
+            </Route>
+            <Route exact path="/how_it_works">
+              <MapContainer />
+            </Route>
+            <Route exact path="/about">
               <MapContainer />
             </Route>
             <Route path="*">

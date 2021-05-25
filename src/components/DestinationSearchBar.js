@@ -10,7 +10,7 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 
-export default function DestinationSearchBar({ active, setActive, stations, setDestination, cleanInput }) {
+export default function DestinationSearchBar({ active, setActive, stations, setStationSelected, setDestination, cleanInput }) {
    const [term, setTerm] = React.useState("");
    const results = usePlaceMatch(term);
    const handleChange = (e) => setTerm(e.target.value);
@@ -68,6 +68,7 @@ export default function DestinationSearchBar({ active, setActive, stations, setD
 
    function handleSubmit(result) {
       setDestination({ lat: result.position_lat, lng: result.position_lng })
+      setStationSelected(result);
       if (!active) setActive(true);
    }
 
