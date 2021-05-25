@@ -49,6 +49,57 @@
   border-bottom: 2px solid rgb(0, 115, 152);
 }
 
+/*Fotter*/
+#container-footer {
+  width: 100%;
+  min-height: 6vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.footer-light-mode {
+  background-color: rgba(0, 115, 152, 1);
+}
+
+.footer-dark-mode {
+  background-color: rgba(120, 120, 120, 1);
+}
+
+.rights {
+  margin: 0px 5px;
+  color: white;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-links li {
+  list-style-type: none;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: white;
+  margin: 0px 4px;
+}
+
+@media screen and (max-width: 1024px) {
+  .footer-links {
+    display: none;
+  }
+
+  .rights {
+    font-size: 12px;
+  }
+}
+
 /* Styles when the page is not found */
 .not-found {
   position: absolute;
@@ -400,3 +451,182 @@
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
 }
+
+
+/* How2 Styling */
+.title {
+  margin: 20px;
+  margin-bottom: 20px;
+}
+
+.header-how2 {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(0, 115, 152, 0.2), rgba(0, 0, 0, 0.6)),
+    url("./fixtures/dbikes.jpg");
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  border-radius: 0px;
+}
+
+.title-how2 > h1 {
+  color: white;
+  font-size: 2.5rem;
+}
+
+/* Pattern styles */
+#wrapper-how2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-half,
+.right-half {
+  background-color: lightblue;
+  border-radius: 15px;
+  flex: 1;
+  padding: 25px 15px;
+  text-align: center;
+}
+
+section {
+  min-width: 1000px;
+  width: 70%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container2 {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.accordion {
+  margin-bottom: 30px;
+}
+
+.accordion-item {
+  background-color: rgba(0, 115, 152, 1);
+  border-radius: 6.4px;
+  margin-bottom: 1.6px;
+  padding: 16px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  margin: 10px 0px;
+}
+
+.accordion-link {
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  position: relative;
+  background-color: #ffffff;
+  transition: max-height 650ms;
+}
+
+.answer::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 90%;
+  background-color: lightblue;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.answer p {
+  color: #000000;
+  font-size: 16px;
+  padding: 30px;
+}
+
+.accordion-item:target .answer {
+  max-height: 320px;
+}
+
+@media screen and (max-width: 1150px) {
+  section {
+    min-width: 800px;
+  }
+
+  .accordion-link {
+    font-size: 16px;
+  }
+
+  .answer p {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  section {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+    padding: 20px 0px;
+    margin: 20px 0px;
+  }
+
+  .container img {
+    display: none;
+  }
+
+  .left-half,
+  .right-half {
+    padding: 0px;
+  }
+
+  article p {
+    padding: 0px 10px;
+  }
+
+  .container2 {
+    padding: 0px;
+  }
+
+  .accordion-item {
+    border-radius: 0px;
+  }
+
+  .accordion-link {
+    font-size: 15px;
+  }
+
+  .answer p {
+    font-size: 13px;
+  }
+}
+

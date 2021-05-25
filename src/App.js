@@ -2,6 +2,7 @@ import Navbar from './components/Navbar';
 import MapContainer from './components/MapContainer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotFound from './components/NotFound';
+import HowItWorks from './components/HowItWorks';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
               <MapContainer />
             </Route>
             <Route exact path="/how_it_works">
-              <MapContainer />
+              <HowItWorks />
             </Route>
             <Route exact path="/about">
               <MapContainer />
