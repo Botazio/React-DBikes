@@ -10,7 +10,7 @@ import {
 import "@reach/combobox/styles.css";
 
 
-export default function OriginSearchBar({ setOrigin, cleanInput }) {
+export default function OriginSearchBar({ setOrigin, cleanInput, textValue, setTextValue }) {
    const { ready, value, suggestions: { status, data }, setValue, clearSuggestions } = usePlacesAutocomplete({
       requestOptions: {
          location: {
@@ -22,15 +22,19 @@ export default function OriginSearchBar({ setOrigin, cleanInput }) {
    });
 
    useEffect(() => {
-      setValue("")
+      setValue("", false)
    }, [cleanInput, setValue]);
+
+   useEffect(() => {
+      setValue(textValue, false);
+      clearSuggestions();
+   }, [textValue]);
 
    return (
       <div>
          <Combobox
             onSelect={async (address) => {
-               setValue(address, false);
-               clearSuggestions();
+               setTextValue(address);
 
                try {
                   const results = await getGeocode({ address });

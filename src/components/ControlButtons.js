@@ -18,7 +18,7 @@ export default function ControlButtons({ buttonSelected, setButtonSelected }) {
             <img src={iconBlueBike} style={{ "width": "20px", "height": "20px" }} alt={'blue bike'} />
             <p>Available<br />Bikes</p>
          </div>
-         <div className={handleClassTag('available_bikes_stands')} onClick={() => setButtonSelected("available_bikes_stands")}>
+         <div className={handleClassTag('available_bike_stands')} onClick={() => setButtonSelected("available_bike_stands")}>
             <img src={iconParking} style={{ "width": "20px", "height": "20px" }} alt={'icon parking'} />
             <p>Available<br />Stands</p>
          </div>

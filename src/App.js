@@ -3,6 +3,7 @@ import MapContainer from './components/MapContainer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotFound from './components/NotFound';
 import HowItWorks from './components/HowItWorks';
+import About from './components/About';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
               <HowItWorks />
             </Route>
             <Route exact path="/about">
-              <MapContainer />
+              <About />
             </Route>
             <Route path="*">
               <NotFound />

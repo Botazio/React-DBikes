@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { GoogleMap, useLoadScript, Marker, InfoWindow, BicyclingLayer } from '@react-google-maps/api';
 import useFetch from "../helpers/useFetch";
 import mapStyles from '../fixtures/mapStyles';
@@ -40,10 +40,7 @@ export default function MapContainer() {
    });
 
    // Fetch the stations
-   const { data: stations, isPending: isPendingStations, errorStations } = useFetch('http://localhost:9000/stations');
-
-   // Fetch the availability
-   const { data: availability, isPending: isPendingAvailability, errorAvailability } = useFetch('http://localhost:9000/availability');
+   const { data: stations, isPending: isPendingStations, errorStations } = useFetch('https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=facbcc8b7cb57b3d308cd541f3c1bec268a36aff');
 
    // Selected marker when the user mouseover a marker (stores a station object)
    const [markerSelected, setMarkerSelected] = useState(null);
@@ -59,24 +56,6 @@ export default function MapContainer() {
    // Default value is available_bikes
    const [buttonSelected, setButtonSelected] = useState("available_bikes");
 
-   // Checker to stop looking for the same information in every render
-   useEffect(() => {
-      (stations && availability && stations.forEach((station) => {
-         // Map through availability until we find the correct station
-         const stationAvailability = availability.find((dinamicInfo) => {
-            if (dinamicInfo.number === station.number) {
-               return dinamicInfo;
-            }
-            return null;
-         })
-
-         // Append availability to the station
-         station.available_bikes = stationAvailability.available_bikes;
-         station.available_bikes_stands = stationAvailability.available_bikes_stands;
-      }))
-
-   }, [stations, availability]);
-
    // mapRef to use in other parts of the code without triggering rerenders
    const mapRef = React.useRef();
    const onMapLoad = React.useCallback((map) => {
@@ -89,11 +68,9 @@ export default function MapContainer() {
 
    // Error handling when fetching for the data
    if (errorStations) return "Unable to get the stations data";
-   if (errorAvailability) return "Unable to get the availability data";
 
    // Display a loading message while fetching for the data
    if (isPendingStations) return "Loading Maps";
-   if (isPendingAvailability) return "Loading Maps";
 
    return (
       <div>
@@ -123,8 +100,8 @@ export default function MapContainer() {
                return (<Marker
                   key={'marker' + station.number}
                   position={{
-                     lat: station.position_lat,
-                     lng: station.position_lng
+                     lat: station.position.lat,
+                     lng: station.position.lng
                   }}
                   name={station.name}
                   icon={{
@@ -221,7 +198,7 @@ function handleInfoWindow(marker) {
                   <img src={iconBlueBike} style={{ "width": "20px", "height": "20px" }} alt={'blue bike'} />
                </div>
                <div className="infowindow-subelements">
-                  <p><b>{marker.available_bikes_stands}</b></p>
+                  <p><b>{marker.available_bike_stands}</b></p>
                   <img src={iconParking} style={{ "width": "20px", "height": "20px" }} alt={'icon parking'} />
                </div>
                <div className="infowindow-subelements">
@@ -234,7 +211,7 @@ function handleInfoWindow(marker) {
 
    return (
       <InfoWindow
-         position={{ lat: (marker.position_lat), lng: marker.position_lng }}
+         position={{ lat: (marker.position.lat), lng: marker.position.lng }}
          options={{
             pixelOffset: new window.google.maps.Size(0, -35)
          }}

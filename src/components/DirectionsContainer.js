@@ -18,6 +18,7 @@ function DirectionsContainer({ active, setActive, stationSelected, setStationSel
    const [origin, setOrigin] = React.useState(null);
    const [destination, setDestination] = React.useState(null);
    const [cleanInput, setCleanInput] = React.useState(false);
+   const [originTextValue, setOriginTextValue] = React.useState("");
 
 
    const panTo = React.useCallback(({ lat, lng }) => {
@@ -103,7 +104,11 @@ function DirectionsContainer({ active, setActive, stationSelected, setStationSel
                   style={{ cursor: "pointer", "width": "20px", "height": "20px" }}
                   alt={'position icon'}
                   onClick={() => getUserPosition()} />
-               <OriginSearchBar setOrigin={setOrigin} cleanInput={cleanInput} />
+               <OriginSearchBar
+                  setOrigin={setOrigin}
+                  cleanInput={cleanInput}
+                  textValue={originTextValue}
+                  setTextValue={setOriginTextValue} />
             </div>)}
 
 
@@ -145,6 +150,7 @@ function DirectionsContainer({ active, setActive, stationSelected, setStationSel
       setDestination(null);
       setUserLocation(null);
       setStationSelected(null);
+      setOriginTextValue("");
 
       if (cleanInput) setCleanInput(false);
       if (!cleanInput) setCleanInput(true);
@@ -152,6 +158,7 @@ function DirectionsContainer({ active, setActive, stationSelected, setStationSel
 
    function getUserPosition() {
       navigator.geolocation.getCurrentPosition((position) => {
+         setOriginTextValue("Current user location");
          setOrigin({
             lat: position.coords.latitude,
             lng: position.coords.longitude

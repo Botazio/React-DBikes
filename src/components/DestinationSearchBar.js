@@ -67,7 +67,7 @@ export default function DestinationSearchBar({ active, setActive, stations, setS
    );
 
    function handleSubmit(result) {
-      setDestination({ lat: result.position_lat, lng: result.position_lng })
+      setDestination({ lat: result.position.lat, lng: result.position.lng })
       setStationSelected(result);
       if (!active) setActive(true);
    }
