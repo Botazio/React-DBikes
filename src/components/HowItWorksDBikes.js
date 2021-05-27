@@ -17,7 +17,7 @@ export default function HowItWorksDBikes() {
             </div>
          </div>
          <div className='title'>
-            <h2>Rent a Bike</h2>
+            <h1>Rent a Bike</h1>
          </div>
          <section className='container'>
             <div className='left-half'>
@@ -98,7 +98,7 @@ export default function HowItWorksDBikes() {
             </div>
          </section>
          <div className='title'>
-            <h2>Frequently Asked Questions</h2>
+            <h1>Frequently Asked Questions</h1>
          </div>
          <section>
             <div className="container2">

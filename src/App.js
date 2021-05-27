@@ -1,11 +1,14 @@
 import Navbar from './components/Navbar';
-import MapContainer from './components/MapContainer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotFound from './components/NotFound';
 import HowItWorks from './components/HowItWorks';
 import About from './components/About';
+import MapKey from './components/MapKey';
+import { useState } from 'react';
 
 function App() {
+  const [mapKey, setMapKey] = useState(null);
+
   return (
     <Router>
       <div className="App">
@@ -13,7 +16,7 @@ function App() {
         <div className="content">
           <Switch>
             <Route exact path="/">
-              <MapContainer />
+              <MapKey mapKey={mapKey} setMapKey={setMapKey} />
             </Route>
             <Route exact path="/how_it_works">
               <HowItWorks />

@@ -32,10 +32,10 @@ const center = {
    lng: -6.26031
 };
 
-export default function MapContainer() {
+export default function MapContainer({ mapKey }) {
    // Loads the map
    const { isLoaded, loadError } = useLoadScript({
-      googleMapsApiKey: "AIzaSyCLGkrQoHNmMyhdvwl0wmron1ndtREM0zM",
+      googleMapsApiKey: mapKey,
       libraries,
       version: "3.42"
    });
