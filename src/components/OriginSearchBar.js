@@ -28,6 +28,7 @@ export default function OriginSearchBar({ setOrigin, cleanInput, textValue, setT
    useEffect(() => {
       setValue(textValue, false);
       clearSuggestions();
+      // eslint-disable-next-line
    }, [textValue]);
 
    return (

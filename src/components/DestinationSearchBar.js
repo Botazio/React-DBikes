@@ -74,6 +74,7 @@ export default function DestinationSearchBar({ active, setActive, stations, setS
 
    function usePlaceMatch() {
       const throttledTerm = useThrottle(term, 100);
+      /* eslint-disable */
       return useMemo(() =>
          term === "" ? null :
             matchSorter(stations, term, { keys: ['address'] }, { threshold: matchSorter.rankings.STARTS_WITH }),

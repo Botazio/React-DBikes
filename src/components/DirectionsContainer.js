@@ -23,7 +23,7 @@ function DirectionsContainer({ active, setActive, stationSelected, setStationSel
    const panTo = React.useCallback(({ lat, lng }) => {
       map.current.panTo({ lat, lng });
       map.current.setZoom(14);
-   })
+   }, [map]);
 
    const directionsCallback = React.useCallback((res) => {
       if (res !== null) {
