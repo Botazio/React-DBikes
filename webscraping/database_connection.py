@@ -35,7 +35,7 @@ engine = create_engine(
 
 
 sql = """
-CREATE DATABASE IF NOT EXISTS dbbikes;
+CREATE DATABASE IF NOT EXISTS dbikes;
 """
 engine.execute(sql)
 

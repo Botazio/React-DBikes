@@ -19,7 +19,7 @@ export default function About() {
             The project can be found in the following <a href="https://github.com/Botazio/React-DBikes">Github repository</a>.</p><br />
                <p>Regarding the organization of the project, I have tried to keep it very simple.
             I am not planning to extend the application so a single styles and components folder is sufficient.<br />
-            The markers are being updated fetching the data from the <a href="https://developer.jcdecaux.com/#/home">JCDeaux API</a> .
+            The markers are being updated fetching the data from the <a href="https://developer.jcdecaux.com/#/home">JCDeaux API</a>.
             You just need to signin to get a free API key.<br /><br />
             The predictions functionality is not available since for this it is necessary a server performing web scrapping
             and introducing those results in a database, in turn an API would communicate with this database extracting
