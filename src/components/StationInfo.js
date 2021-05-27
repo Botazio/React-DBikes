@@ -33,5 +33,6 @@ export default function StationInfo({ stationSelected }) {
             </div>
          </div>
       </div>
+
    )
 }

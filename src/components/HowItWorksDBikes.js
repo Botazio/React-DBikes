@@ -17,7 +17,7 @@ export default function HowItWorksDBikes() {
             </div>
          </div>
          <div className='title'>
-            <h1>Rent a Bike</h1>
+            <h2>Rent a Bike</h2>
          </div>
          <section className='container'>
             <div className='left-half'>

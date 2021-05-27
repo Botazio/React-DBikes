@@ -8,7 +8,6 @@ import DestinationSearchBar from './DestinationSearchBar';
 import OriginSearchBar from './OriginSearchBar';
 import iconPosition from '../fixtures/icon-position.png';
 import iconRefresh from '../fixtures/icon-refresh.png';
-import iconClose from '../fixtures/icon-close.png';
 import iconDirection from '../fixtures/icon-direction.png';
 
 
@@ -67,33 +66,20 @@ function DirectionsContainer({ active, setActive, stationSelected, setStationSel
    }
 
    return (
-      <div>
-         {/*The components are displayed depending if the side bar is active or not*/}
-         {!active && (<div>
-            <div
-               className="directions-button rounded"
-               onClick={() => { setActive(true) }}>
-               <img
-                  src={iconDirection}
-                  style={{ "width": "20px", "height": "20px" }}
-                  alt={'directions icon'} />
-            </div>
-         </div>)}
-
-         {active && (<div>
+      <>
+         { active && (
             <div
                className="close-search-button"
                onClick={() => { cleanSearch(); setActive(false) }}>
                <img
-                  src={iconClose}
-                  style={{ "width": "15px", "height": "15px" }}
                   alt={'close icon'} />
             </div>
-         </div>)}
+         )
+         }
 
-         {/* A tag is used in this case because the side bar styles are different depending 
-         if it is active or not */}
+         {/* A tag is used in this case because the side bar styles are different depending if it is active or not */}
          <div className={"directions-container-" + handleClassTag()}>
+
             {active && (<div>
                <TransportTypeButtons setTravelMode={setTravelMode} />
             </div>)}
@@ -128,20 +114,31 @@ function DirectionsContainer({ active, setActive, stationSelected, setStationSel
                   cleanInput={cleanInput}
                   setDestination={setDestination} />
             </div>
+
+            {!active && (
+               <div
+                  className="directions-button rounded"
+                  onClick={() => { setActive(true) }}>
+                  <img
+                     src={iconDirection}
+                     style={{ "width": "20px", "height": "20px" }}
+                     alt={'directions icon'} />
+               </div>
+            )}
+
+            {/* Render the directions on the map if the user introduces origin and destination */}
+            {origin && destination && (
+               <DirectionsService
+                  options={directionsServiceOptions}
+                  callback={directionsCallback}
+               />
+            )}
+
+            {response !== null && (
+               <DirectionsRenderer options={directionsRendererOptions} />
+            )}
          </div>
-
-         {/* Render the directions on the map if the user introduces origin and destination */}
-         {origin && destination && (
-            <DirectionsService
-               options={directionsServiceOptions}
-               callback={directionsCallback}
-            />
-         )}
-
-         {response !== null && (
-            <DirectionsRenderer options={directionsRendererOptions} />
-         )}
-      </div>
+      </>
    )
 
    function cleanSearch() {

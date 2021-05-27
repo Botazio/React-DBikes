@@ -11,7 +11,7 @@ function SideBar({ stations, map, setUserLocation, stationSelected, setStationSe
       if (active) {
          return "side-bar-active";
       }
-      return "side-bar";
+      return "side-bar-inactive";
    }
 
    return (

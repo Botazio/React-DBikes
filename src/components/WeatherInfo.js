@@ -122,29 +122,33 @@ export default function WeatherInfo() {
    }
 
    return (
+      <>
       <div className="weather-wrapper">
          <div id="prev-weather" href="/#" onClick={() => handleCurrentSlide(currentSlide - 1)}>&#10094;</div>
          <div id="next-weather" href="/#" onClick={() => handleCurrentSlide(currentSlide + 1)}>&#10095;</div>
          {weatherSlides[currentSlide]}
-         <Chart
-         chartType="LineChart"
-         rows={forecastWeather}
-         options={options}
-         columns={[
-         {
-          type: "date",
-          label: "Time"
-         },
-         {
-          type: "number",
-          label: "Humidiy"
-         },
-         {
-          type: "number",
-          label: "Temperature"
-         }
-         ]} />
+         <div id="weather-chart">
+            <Chart
+            chartType="LineChart"
+            rows={forecastWeather}
+            options={options}
+            columns={[
+            {
+            type: "date",
+            label: "Time"
+            },
+            {
+            type: "number",
+            label: "Humidiy"
+            },
+            {
+            type: "number",
+            label: "Temperature"
+            }
+            ]} />
+         </div>
       </div>
+      </>
    )
 
    function handleCurrentSlide(n) {
