@@ -18,7 +18,7 @@ const libraries = ["places"];
 const containerStyle = {
    position: 'relative',
    width: '100%',
-   height: '88vh'
+   height: '100%'
 };
 
 const options = {
@@ -74,7 +74,7 @@ export default function MapContainer({ mapKey }) {
    if (isPendingStations) return "Loading Maps";
 
    return (
-      <div>
+      <div id="map-container">
          {/* Top center buttons */}
          <ControlButtons buttonSelected={buttonSelected} setButtonSelected={setButtonSelected}></ControlButtons>
          <GoogleMap

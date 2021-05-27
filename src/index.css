@@ -110,7 +110,7 @@
   }
 
   .rights {
-    font-size: 12px;
+    font-size: 0.8rem;
   }
 }
 
@@ -153,7 +153,7 @@
   box-sizing: border-box;
 }
 
-#submit-key[type=submit] {
+#submit-key[type=button] {
   width: 150px;
   font-size: 1rem;
   padding: 10px 15px;
@@ -166,7 +166,7 @@
   cursor: pointer;
 }
 
-#submit-key[type=submit]:hover {
+#submit-key[type=button]:hover {
   background-color: lightblue;
   color: rgb(0, 115, 152);
   transition: 0.5s;
@@ -209,6 +209,11 @@
 
 /* disabled the cross in the infowindows */
 .gm-style-iw > button {display: none!important;}
+
+/* Styles map container */
+#map-container {
+  height: calc(var(--vh, 1vh) * 88);
+}
 
 /* Styles for the info windows */
 .contentStr {
@@ -337,7 +342,7 @@
 
 .waiting-info-container,
 .active-info-container {
-  height: calc(88vh - 225px);
+  height: calc((var(--vh, 1vh) * 88) - 225px);
   background-color: white;
 }
 
@@ -608,7 +613,7 @@
   
   .waiting-info-container,
   .active-info-container {
-    min-height: calc(88vh - 175px);
+    height: calc((var(--vh, 1vh) * 88) - 175px);
     background-color: white;
   }
 
@@ -808,7 +813,7 @@ article > h2 {
 }
 
 .accordion-link {
-  font-size: 18px;
+  font-size: 1.1rem;
   color: rgb(255, 255, 255);
   text-decoration: none;
   width: 100%;
@@ -838,7 +843,7 @@ article > h2 {
 
 .answer p {
   color: #000000;
-  font-size: 16px;
+  font-size: 1rem;
   padding: 30px;
 }
 
@@ -849,14 +854,6 @@ article > h2 {
 @media screen and (max-width: 1150px) {
   section {
     min-width: 800px;
-  }
-
-  .accordion-link {
-    font-size: 16px;
-  }
-
-  .answer p {
-    font-size: 14px;
   }
 }
 
@@ -890,7 +887,7 @@ article > h2 {
   }
 
   .title > h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     text-align: center;
   }
 
@@ -912,11 +909,11 @@ article > h2 {
   }
 
   .accordion-link {
-    font-size: 15px;
+    font-size: 1rem;
   }
 
   .answer p {
-    font-size: 13px;
+    font-size: 0.9rem;
   }
 }
 
@@ -972,9 +969,6 @@ article > h2 {
   }
   .profile-text-wrapper {
     padding: 3vh;
-  }
-  .profile-text-wrapper > p {
-    font-size: 0.9rem;
   }
 }
 

@@ -20,11 +20,11 @@ export default function MapKey({ mapKey, setMapKey }) {
          {!mapKey && (
             <>
                <div className="key-auth">
-                  <form id="form-key-auth" onSubmit={() => handleSubmit()}>
+                  <form id="form-key-auth">
                      <div><h3>Enter a Google key</h3></div>
                      <div>
                         <input type="text" id="input-text-key" value={value} onChange={(e) => setValue(e.target.value)} />
-                        <input type="submit" id="submit-key" value="Submit" />
+                        <input type="button" id="submit-key" value="Submit" onClick={() => handleSubmit()} />
                      </div>
                      <div className="default-key rounded" onClick={() => handleDefaultKey()}>
                         <h4>Use default key</h4>
