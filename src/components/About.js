@@ -15,7 +15,7 @@ export default function About() {
                <h2>About The Project</h2>
                <p>The project is based in the <a href="https://www.dublinbikes.ie/en/mapping">Dublin Bikes Page</a>. It has
             been developed in React using external libraries
-            to interact with <a href="https://www.npmjs.com/package/@react-google-maps/api">Google Maps API</a> and <a href="https://www.npmjs.com/package/react-google-charts">Google Graphs API</a> .
+            to interact with <a href="https://www.npmjs.com/package/@react-google-maps/api">Google Maps API</a> and <a href="https://www.npmjs.com/package/react-google-charts">Google Graphs API</a>.
             The project can be found in the following <a href="https://github.com/Botazio/React-DBikes">Github repository</a>.</p><br />
                <p>Regarding the organization of the project, I have tried to keep it very simple.
             I am not planning to extend the application so a single styles and components folder is sufficient.<br />
