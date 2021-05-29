@@ -25,7 +25,7 @@ export default function StationInfo({ stationSelected }) {
                <img src={iconBlueBike} style={{ "width": "20px", "height": "20px" }} alt={'blue bike'} />
             </div>
             <div className="station-info-subelements">
-               <p><b>{stationSelected.available_bikes_stands}</b></p>
+               <p><b>{stationSelected.available_bike_stands}</b></p>
                <img src={iconParking} style={{ "width": "20px", "height": "20px" }} alt={'icon parking'} />
             </div>
             <div className="station-info-subelements">

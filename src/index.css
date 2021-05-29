@@ -114,6 +114,13 @@
   }
 }
 
+@media screen and (max-width: 600px) {
+
+#container-footer {
+  min-height: 50px;
+}
+}
+
 /* Styles for the key authentification */
 .key-auth {
   width: 100%;
@@ -344,6 +351,7 @@
 .active-info-container {
   height: calc((var(--vh, 1vh) * 88) - 225px);
   background-color: white;
+  overflow-y: scroll;
 }
 
 .waiting-info-container {
@@ -660,8 +668,8 @@
     right: 60px;
   }
 
-  .station-info-wrapper {
-    font-size: 1rem;
+  .station-info-subelements {
+    font-size: 1.1rem;
   }
 
   .weather-wrapper > div {
@@ -722,12 +730,6 @@
   }
 }
 
-@media screen and (max-height: 600px) {
-  #weather-chart {
-    display: none;
-  }
-  
-}
 
 
 /* How2 Styling */
@@ -822,6 +824,11 @@ article > h2 {
   justify-content: space-between;
   padding: 16px 0;
 }
+
+.accordion-link > img {
+  margin-left: 5px;
+}
+
 .answer {
   max-height: 0;
   overflow: hidden;

@@ -5,7 +5,11 @@ document.documentElement.style.setProperty("--vh", `${vh}px`);
 
 // We listen to the resize event
 window.addEventListener("resize", () => {
-   // We execute the same script as before
+   // Check if the virtual keyboard is display
+   if (document.activeElement.tagName == "INPUT" || document.activeElement.tagName == "input") {
+      return;
+   }
+   // We execute the same script as before 
    let vh = window.innerHeight * 0.01;
    document.documentElement.style.setProperty("--vh", `${vh}px`);
 });
