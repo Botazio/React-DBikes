@@ -354,6 +354,19 @@
   overflow-y: scroll;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.waiting-info-container::-webkit-scrollbar,
+.active-info-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.waiting-info-container,
+.active-info-container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 .waiting-info-container {
   display: flex;
   justify-content: center;
